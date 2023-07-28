@@ -1,0 +1,9 @@
+.cardBtn{
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bolder;
+    color:rgba(0, 0, 0, 0.6);
+}

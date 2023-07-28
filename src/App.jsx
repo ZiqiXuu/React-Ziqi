@@ -1,17 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import NaviBar from "./component/NaviBar";
+import Header from './component/Header.jsx';
+import BottomBar from "./component/BottomBar";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import Header from './Header.jsx';
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#2AC420', // 这里是你想要的颜色
+        },
+        secondary: {
+            main: '#f44336',
+        },
+    },
+});
+
 
 const App = () => {
-  return (
-    <div className='container'>
-      <Header/>
-      <div className="container-view">Some activities should be here</div>
-    </div>
-  );
+    return (
+        <ThemeProvider theme={theme}>
+                <div className='container'>
+                    <Header/>
+                    <NaviBar/>
+                    <BottomBar/>
+                </div>
+        </ThemeProvider>
+    )
 };
-
-ReactDOM.render(<App/>, document.getElementById('app'));
 
 export default App;

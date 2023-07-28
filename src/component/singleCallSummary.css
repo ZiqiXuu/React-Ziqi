@@ -1,0 +1,13 @@
+.direction{
+    padding: 0 20px;
+    font-weight: bolder;
+    width: 70px;
+}
+
+.mainContent{
+    padding: 5px;
+}
+
+.outContainer{
+    width: 100%
+}
