@@ -4,7 +4,7 @@ import './callDetailPage.css'
 import {useParams} from 'react-router-dom'
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllActivities, fetchMultipleActivities, fetchSingleActivities} from "../store/actions/activitiesAction";
+import {fetchMultipleActivities, fetchSingleActivities} from "../store/actions/activitiesAction";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {useNavigate} from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
@@ -26,10 +26,10 @@ const CallDetailPage = () => {
     }, [])
 
     const fetchOne = (id) => {
-        dispatch(setLoading());  // 设置 loading 状态
+        dispatch(setLoading());
         id.includes("+") ? dispatch(fetchMultipleActivities(id)):dispatch(fetchSingleActivities(id))
         setTimeout(async () => {
-            dispatch(clearLoading());  // 清除 loading 状态
+            dispatch(clearLoading());
         }, 600);
     }
 
@@ -37,7 +37,6 @@ const CallDetailPage = () => {
         return(
             <div>
                 {calls.map((call)=>{
-                    console.log(call)
                     if(call){
                         return(
                             <div>

@@ -18,20 +18,20 @@ const CallsList = (props) => {
     const isLoading = useSelector(state => state.loadingReducer?.isLoading)
 
     let filteredAndSortedActivities = allActivities.filter(item => {
-        const filter = isInbox ? item.is_archived : !item.is_archived;
-        return item.direction && item.from && item.to && filter;
+        const filter = isInbox ? item.is_archived : !item.is_archived
+        return item.direction && item.from && item.to && filter
     }).sort((a, b) => {
-        const keyA = a.created_at.split('T')[0] + a.direction;
-        const keyB = b.created_at.split('T')[0] + b.direction;
-        return keyA > keyB ? -1 : (keyA < keyB ? 1 : 0);
+        const keyA = a.created_at.split('T')[0] + a.direction
+        const keyB = b.created_at.split('T')[0] + b.direction
+        return keyA > keyB ? -1 : (keyA < keyB ? 1 : 0)
     });
 
     const updateAll = (newIsArchived) => {
-        dispatch(setLoading());  // 设置 loading 状态
-        dispatch(updateAllCalls(filteredAndSortedActivities, newIsArchived));
+        dispatch(setLoading())
+        dispatch(updateAllCalls(filteredAndSortedActivities, newIsArchived))
         setTimeout(async () => {
-            dispatch(clearLoading());  // 清除 loading 状态
-        }, 1200);  // 2 秒延迟
+            dispatch(clearLoading())
+        }, 1200)
     }
 
     useEffect(() => {
@@ -49,19 +49,19 @@ const CallsList = (props) => {
     }, {});
 
     const sortCallsByGroup = (calls) => {
-        let groupedData = [];
-        let lastItem = null;
+        let groupedData = []
+        let lastItem = null
         for (let item of calls) {
-            const directionKey = item.direction === 'outbound' ? 'to' : 'from';
+            const directionKey = item.direction === 'outbound' ? 'to' : 'from'
             if (lastItem && lastItem.direction === item.direction && lastItem[directionKey] === item[directionKey]) {
-                lastItem.items.push(item);
+                lastItem.items.push(item)
             } else {
                 lastItem = {
                     direction: item.direction,
                     [directionKey]: item[directionKey],
                     items: [item],
                 };
-                groupedData.push(lastItem);
+                groupedData.push(lastItem)
             }
         }
         return groupedData

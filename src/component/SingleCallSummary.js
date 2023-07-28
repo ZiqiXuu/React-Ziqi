@@ -42,10 +42,10 @@ const SingleCallSummary = (props) => {
     }
 
     const updateOne = (id,is_archived) => {
-        dispatch(setLoading());  // 设置 loading 状态
+        dispatch(setLoading())
         dispatch(updateCall(id, !is_archived))
         setTimeout(async () => {
-            dispatch(clearLoading());  // 清除 loading 状态
+            dispatch(clearLoading())
         }, 1000);
     }
 
